@@ -48,7 +48,7 @@ int main(int argc, const char * argv[]) {
     printf("\n");
 
     printf(TEXTGREEN);
-    printf("\nEste es el Xc Mac Stress Test versión Beta 1.02 (compatible con sistemas Unix y Linux). Esta herramienta ha sido desarrollada por Xoán Cosmed.\n");
+    printf("\nEste es el Xc Mac Stress Test versión Beta 1.03 (compatible con sistemas Unix y Linux). Esta herramienta ha sido desarrollada por Xoán Cosmed.\n");
     printf(TEXTBLUE);
     printf("\nEsta herramienta permite poner a prueba el rendimiento del equipo. En esta herramienta se hace uso de comandos como \"yes\" y funciones de C repetidas muchas veces (como \"calloc\"), por eso el uso de ésta ha de hacerse con precaución. Para ello se recomienta monitorear el sistema con una herramienta, como por ejemplo el 'Monitor del Sistema' o 'htop' En caso de cualquier mínimo problema se recomienda cancelar la prueba. ");
     printf(TEXTCYAN);
@@ -139,7 +139,7 @@ void EstresarProcesador ()
 
     } while (num > 255 || num < 1);
 
-    printf("\n\nUna vez iniciado el proceso de estrés pulse ENTER para finalizar dicho proceso.\n\nNotas: En caso de no finalizarse de manera correcta pulse \"Ctr + Z\" y a continuación escriba en su terminal \"killall yes\" si el ordenador sigue ejecutando el test. Se recomienda revisar el proceso a través del Monitor de Actividad.\n");
+    printf("\n\nUna vez iniciado el proceso de estrés pulse ENTER para finalizar dicho proceso.\n\nNotas: En caso de que al pulsar ENTER para finalizar el test, éste no se termine, pulse \"Ctr + Z\" y a continuación escriba en su terminal \"killall yes\". Se recomienda revisar el proceso a través del Monitor de Actividad.\n");
     printf("\nSi ha comprendido lo anterior pulse ENTER para comenzar.\n");
 
     while (getchar() != '\n') {}
@@ -151,7 +151,8 @@ void EstresarProcesador ()
         cad[0] = '\0';
         strcat(cad, "yes ");
         strcat(cad, cadN);
-        strcat(cad, " &");
+        strcat(cad, " > /dev/null &");
+        //strcat(cad, " &");
 
         system(cad);
     }
